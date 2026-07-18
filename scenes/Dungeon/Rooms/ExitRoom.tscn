@@ -28,7 +28,6 @@ position = Vector2(160, 200)
 
 [node name="ExitLeft" type="Area2D" parent="."]
 position = Vector2(10, 120)
-size = Vector2(20, 60)
 
 [node name="ExitLeft/CollisionShape2D" type="CollisionShape2D" parent="ExitLeft"]
 shape = RectangleShape2D.new()

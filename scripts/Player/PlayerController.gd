@@ -76,7 +76,7 @@ func _handle_attack_animation(delta):
 		attack_timer -= delta
 		if attack_timer <= 0:
 			is_attacking = false
-			attack_area/CollisionShape2D.disabled = true
+			attack_area.get_node("CollisionShape2D").disabled = true
 
 
 func _unhandled_input(event):
@@ -99,7 +99,7 @@ func _perform_attack():
 	attack_cooldown_timer = ATTACK_COOLDOWN
 	is_attacking = true
 	attack_timer = 0.2
-	attack_area/CollisionShape2D.disabled = false
+	attack_area.get_node("CollisionShape2D").disabled = false
 	var damage = RunData.strength
 	if RunData.berserker_active:
 		damage *= 2
@@ -114,7 +114,7 @@ func _perform_heavy_attack():
 	RunData.fury -= HEAVY_ATTACK_COST
 	is_attacking = true
 	attack_timer = 0.35
-	attack_area/CollisionShape2D.disabled = false
+	attack_area.get_node("CollisionShape2D").disabled = false
 	var damage = RunData.strength * 2
 	if RunData.berserker_active:
 		damage *= 2

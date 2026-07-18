@@ -99,7 +99,7 @@ func _generate_room_graph(num_rooms: int) -> Array:
 	return rooms_data
 
 
-func move_player_to_room(room_index: int, spawn_direction: Direction):
+func move_player_to_room(room_index: int, spawn_direction: int):
 	var old_room = rooms[current_room_index]
 	if old_room:
 		old_room.visible = false

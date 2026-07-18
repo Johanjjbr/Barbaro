@@ -40,7 +40,7 @@ func _update_depth():
 	$DepthLabel.text = "Piso: %d | Salas: %d" % [RunData.dungeon_depth, RunData.rooms_cleared]
 
 
-func _on_notification_added(notification: Notification):
+func _on_notification_added(notification):
 	var label = Label.new()
 	label.text = notification.text
 	label.theme_override_colors/font_color = Color(0.8, 0.9, 1, 1)
