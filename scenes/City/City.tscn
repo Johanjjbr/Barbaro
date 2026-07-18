@@ -1,0 +1,76 @@
+[gd_scene load_steps=3 format=3 ]
+
+[ext_resource type="Script" path="res://scripts/City/City.gd" id="1_city"]
+[ext_resource type="PackedScene" path="res://scenes/HUD/HUD.tscn" id="2_hud"]
+
+[node name="City" type="Node2D"]
+script = ExtResource("1_city")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_scale = 0 (null)
+scroll_offset = Vector2(0, 0)
+
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground"]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.1, 0.08, 0.06, 1)
+
+[node name="CityLabel" type="Label" parent="."]
+offset_left = 540.0
+offset_top = 50.0
+offset_right = 740.0
+offset_bottom = 100.0
+text = "CIUDAD"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 32
+
+[node name="ButtonContainer" type="VBoxContainer" parent="."]
+offset_left = 440.0
+offset_top = 150.0
+offset_right = 840.0
+offset_bottom = 500.0
+theme_override_constants/separation = 10
+
+[node name="DungeonButton" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+text = "ENTRAR AL LABERINTO"
+theme_override_font_sizes/font_size = 18
+
+[node name="ShopButton" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+text = "TIENDA"
+theme_override_font_sizes/font_size = 18
+
+[node name="ForgeButton" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+text = "FORJA (Mejorar equipo)"
+theme_override_font_sizes/font_size = 18
+
+[node name="TrainerButton" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+text = "ENTRENADOR (Aprender habilidades)"
+theme_override_font_sizes/font_size = 18
+
+[node name="CompendiumButton" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+text = "COMPENDIO DEL META-JUGADOR"
+theme_override_font_sizes/font_size = 18
+
+[node name="StatsLabel" type="Label" parent="."]
+offset_left = 20.0
+offset_top = 680.0
+offset_right = 400.0
+offset_bottom = 710.0
+text = "Oro: 0 | Reputación: 50 | Sospecha: 0"
+theme_override_font_sizes/font_size = 14
+
+[node name="HUD" parent="." instance=ExtResource("2_hud")]
+
+[node name="TaxLabel" type="Label" parent="."]
+offset_left = 850.0
+offset_top = 680.0
+offset_right = 1260.0
+offset_bottom = 710.0
+text = "Impuestos en: 30 días | Rango: Ciudadano"
+theme_override_font_sizes/font_size = 14

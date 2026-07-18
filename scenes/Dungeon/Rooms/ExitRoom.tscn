@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 ]
+
+[ext_resource type="Script" path="res://scripts/Dungeon/BaseRoom.gd" id="1_base"]
+[ext_resource type="Script" path="res://scripts/Dungeon/RoomExit.gd" id="2_exit"]
+
+[node name="ExitRoom" type="Node2D"]
+script = ExtResource("1_base")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+position = Vector2(0, 0)
+size = Vector2(320, 240)
+color = Color(0.1, 0.15, 0.25, 1)
+
+[node name="Label" type="Label" parent="."]
+position = Vector2(80, 80)
+size = Vector2(160, 40)
+text = "SALIDA"
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0, 1, 0.5, 1)
+
+[node name="Portal" type="ColorRect" parent="."]
+position = Vector2(140, 130)
+size = Vector2(40, 40)
+color = Color(0, 0.8, 0.4, 0.7)
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(160, 200)
+
+[node name="ExitLeft" type="Area2D" parent="."]
+position = Vector2(10, 120)
+size = Vector2(20, 60)
+
+[node name="ExitLeft/CollisionShape2D" type="CollisionShape2D" parent="ExitLeft"]
+shape = RectangleShape2D.new()
+shape.size = Vector2(20, 60)
+
+[node name="Script" type="Script" parent="."]
+script = ExtResource("2_exit")

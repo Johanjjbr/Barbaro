@@ -1,0 +1,28 @@
+# Godot exports
+*.exe
+*.dmg
+*.deb
+*.apk
+*.aab
+*.pck
+*.zip
+
+# Godot specific
+.godot/
+import/
+*.import
+
+# OS
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Godot editor data
+export_presets.cfg
+**/export_presets.cfg

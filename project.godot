@@ -1,0 +1,40 @@
+[application]
+config/name="El Bárbaro"
+config/description="Roguelike de laberinto con sistema meta-consciente"
+run/main_scene="res://scenes/UI/MainMenu.tscn"
+config/icon=""
+boot_splash/bg_color=Color(0.05, 0.05, 0.05, 1)
+
+[rendering]
+renderer/rendering_method="gl_compatibility"
+2d/sdf/oversize=1.0
+
+[display]
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/mode=0
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep"
+window/dpi/allow_hidpi=true
+
+[input]
+ui_accept={ "deadzone": 0.5, "events": [ { "keycode": 4194309 } ] }
+ui_cancel={ "deadzone": 0.5, "events": [ { "keycode": 4194305 } ] }
+move_left={ "deadzone": 0.5, "events": [ { "keycode": 65 }, { "keycode": 4194319 } ] }
+move_right={ "deadzone": 0.5, "events": [ { "keycode": 68 }, { "keycode": 4194321 } ] }
+move_up={ "deadzone": 0.5, "events": [ { "keycode": 87 }, { "keycode": 4194320 } ] }
+move_down={ "deadzone": 0.5, "events": [ { "keycode": 83 }, { "keycode": 4194322 } ] }
+attack={ "deadzone": 0.5, "events": [ { "keycode": 4194309 }, { "mouse_button": 1 } ] }
+heavy_attack={ "deadzone": 0.5, "events": [ { "keycode": 81 } ] }
+skill_1={ "deadzone": 0.5, "events": [ { "keycode": 49 } ] }
+skill_2={ "deadzone": 0.5, "events": [ { "keycode": 50 } ] }
+interact={ "deadzone": 0.5, "events": [ { "keycode": 32 } ] }
+pause={ "deadzone": 0.5, "events": [ { "keycode": 4194305 } ] }
+
+[autoload]
+GameManager="*res://scripts/Autoload/GameManager.gd"
+MetaKnowledge="*res://scripts/Autoload/MetaKnowledge.gd"
+PlayerData="*res://scripts/Autoload/PlayerData.gd"
+RunData="*res://scripts/Autoload/RunData.gd"
+NotificationSystem="*res://scripts/Autoload/NotificationSystem.gd"
+SuspicionSystem="*res://scripts/Autoload/SuspicionSystem.gd"
