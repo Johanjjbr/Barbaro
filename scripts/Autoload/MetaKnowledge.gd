@@ -16,10 +16,10 @@ class RoomEntry:
 	var loot_claimed: bool = false
 
 var bestiary: Dictionary = {}
-	var explored_rooms: Dictionary = {}
-	var dungeon_seeds_visited: Array[int] = []
-	var total_runs: int = 0
-	var total_deaths: int = 0
+var explored_rooms: Dictionary = {}
+var dungeon_seeds_visited: Array[int] = []
+var total_runs: int = 0
+var total_deaths: int = 0
 
 
 func _ready():
