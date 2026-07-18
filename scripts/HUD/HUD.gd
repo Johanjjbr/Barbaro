@@ -43,8 +43,8 @@ func _update_depth():
 func _on_notification_added(notification):
 	var label = Label.new()
 	label.text = notification.text
-	label.theme_override_colors/font_color = Color(0.8, 0.9, 1, 1)
-	label.theme_override_font_sizes/font_size = 12
+	label.add_theme_color_override("font_color", Color(0.8, 0.9, 1, 1))
+	label.add_theme_font_size_override("font_size", 12)
 	label.modulate = Color(1, 1, 1, 1)
 	$NotificationContainer.add_child(label)
 	notification_pool.append(label)
