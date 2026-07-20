@@ -16,14 +16,14 @@ func change_state(new_state: GameState):
 	state_changed.emit(new_state)
 	match new_state:
 		GameState.DUNGEON:
-			get_tree().change_scene_to_file("res://scenes/Dungeon/Dungeon.tscn")
+			get_tree().change_scene_to_file("res://scenes/dungeon/Dungeon.tscn")
 		GameState.CITY:
-			get_tree().change_scene_to_file("res://scenes/City/City.tscn")
+			get_tree().change_scene_to_file("res://scenes/city/City.tscn")
 		GameState.DEATH_SCREEN:
 			RunData.end_run()
-			get_tree().change_scene_to_file("res://scenes/UI/DeathScreen.tscn")
+			get_tree().change_scene_to_file("res://scenes/ui/DeathScreen.tscn")
 		GameState.MAIN_MENU:
-			get_tree().change_scene_to_file("res://scenes/UI/MainMenu.tscn")
+			get_tree().change_scene_to_file("res://scenes/ui/MainMenu.tscn")
 
 
 func enter_dungeon():

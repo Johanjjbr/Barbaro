@@ -1,17 +1,12 @@
 extends Node
 
+var stats: CharacterStats
 var gold: int = 0
 var reputation: int = 50
 var suspicion: int = 0
 var max_suspicion: int = 100
 var gear: Array[String] = []
 var learned_skills: Array[String] = ["basic_attack", "heavy_strike"]
-var base_stats: Dictionary = {
-	"max_hp": 100,
-	"strength": 10,
-	"defense": 5,
-	"speed": 8
-}
 var tax_paid: bool = false
 var days_until_tax: int = 30
 var citizen_tier: String = "medium"
@@ -19,6 +14,8 @@ var current_season: int = 1
 
 
 func _ready():
+	if stats == null:
+		stats = CharacterStats.new()
 	load_data()
 
 
@@ -61,7 +58,12 @@ func save_data():
 			"suspicion": suspicion,
 			"gear": gear,
 			"learned_skills": learned_skills,
-			"base_stats": base_stats,
+			"stored_stats": {
+				"max_hp": stats.max_hp,
+				"strength": stats.strength,
+				"defense": stats.defense,
+				"speed": stats.speed
+			},
 			"days_until_tax": days_until_tax,
 			"citizen_tier": citizen_tier,
 			"current_season": current_season
@@ -77,7 +79,12 @@ func load_data():
 		suspicion = data.get("suspicion", 0)
 		gear = data.get("gear", [])
 		learned_skills = data.get("learned_skills", ["basic_attack", "heavy_strike"])
-		base_stats = data.get("base_stats", base_stats)
+		var loaded_stats = data.get("stored_stats", data.get("base_stats", {}))
+		if loaded_stats.size() > 0:
+			stats.max_hp = loaded_stats.get("max_hp", 100)
+			stats.strength = loaded_stats.get("strength", 10)
+			stats.defense = loaded_stats.get("defense", 5)
+			stats.speed = loaded_stats.get("speed", 8)
 		days_until_tax = data.get("days_until_tax", 30)
 		citizen_tier = data.get("citizen_tier", "medium")
 		current_season = data.get("current_season", 1)

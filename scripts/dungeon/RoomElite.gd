@@ -1,4 +1,4 @@
-extends "res://scripts/Dungeon/BaseRoom.gd"
+extends "res://scripts/dungeon/BaseRoom.gd"
 
 var enemy_instance: Node2D = null
 
@@ -6,12 +6,10 @@ var enemy_instance: Node2D = null
 func _ready():
 	super()
 	_spawn_elite_enemy()
-	$ExitRight.body_entered.connect(_on_exit_right_body_entered)
-	$ExitLeft.body_entered.connect(_on_exit_left_body_entered)
 
 
 func _spawn_elite_enemy():
-	var goblin_scene = preload("res://scenes/Dungeon/Enemies/Goblin.tscn")
+	var goblin_scene = preload("res://scenes/dungeon/enemies/Goblin.tscn")
 	enemy_instance = goblin_scene.instantiate()
 	enemy_instance.position = $EnemySpawn.position
 	enemy_instance.hp = 80
@@ -29,17 +27,5 @@ func _spawn_elite_enemy():
 
 func on_room_cleared():
 	super()
-	$ExitRight/CollisionShape2D.disabled = false
-	$ExitLeft/CollisionShape2D.disabled = false
 	NotificationSystem.add_notification("¡+50 Oro - Élite derrotado!", "")
 	RunData.add_loot("elite_trophy", "Trofeo de élite", 50)
-
-
-func _on_exit_right_body_entered(body):
-	if body.is_in_group("player") and room_cleared:
-		_on_exit_used(3)
-
-
-func _on_exit_left_body_entered(body):
-	if body.is_in_group("player") and room_cleared:
-		_on_exit_used(2)

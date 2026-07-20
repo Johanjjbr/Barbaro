@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 ]
 
-[ext_resource type="Script" path="res://scripts/Dungeon/BaseRoom.gd" id="1_base"]
-[ext_resource type="Script" path="res://scripts/Dungeon/RoomElite.gd" id="2_elite"]
+[ext_resource type="Script" path="res://scripts/dungeon/BaseRoom.gd" id="1_base"]
+[ext_resource type="Script" path="res://scripts/dungeon/RoomElite.gd" id="2_elite"]
 
 [node name="EliteRoom" type="Node2D"]
 script = ExtResource("1_base")

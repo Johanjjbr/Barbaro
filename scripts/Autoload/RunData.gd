@@ -21,13 +21,13 @@ func _ready():
 
 
 func start_new_run():
-	current_hp = PlayerData.base_stats.max_hp
-	max_hp = PlayerData.base_stats.max_hp
+	current_hp = PlayerData.stats.max_hp
+	max_hp = PlayerData.stats.max_hp
 	fury = 0
 	max_fury = 100
-	strength = PlayerData.base_stats.strength
-	defense = PlayerData.base_stats.defense
-	speed = PlayerData.base_stats.speed
+	strength = PlayerData.stats.strength
+	defense = PlayerData.stats.defense
+	speed = PlayerData.stats.speed
 	dungeon_depth = 0
 	rooms_cleared = 0
 	loot_pouch.clear()
@@ -61,13 +61,13 @@ func add_fury(amount: int):
 func activate_berserker():
 	berserker_active = true
 	berserker_timer = 5.0
-	strength = PlayerData.base_stats.strength * 2
+	strength = PlayerData.stats.strength * 2
 	NotificationSystem.add_notification("¡FURIA DESATADA! Daño duplicado por 5 segs")
 
 
 func deactivate_berserker():
 	berserker_active = false
-	strength = PlayerData.base_stats.strength
+	strength = PlayerData.stats.strength
 	fury = 0
 
 

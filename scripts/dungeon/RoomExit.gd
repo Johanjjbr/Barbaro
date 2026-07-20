@@ -1,4 +1,4 @@
-extends "res://scripts/Dungeon/BaseRoom.gd"
+extends "res://scripts/dungeon/BaseRoom.gd"
 
 var portal_timer: float = 0.0
 var portal_active: bool = false
@@ -6,7 +6,7 @@ var portal_active: bool = false
 
 func _ready():
 	super()
-	$ExitLeft.body_entered.connect(_on_exit_left_body_entered)
+	require_clear_for_exit = false
 	$Label.text = "SALIDA - Pulsa Espacio para escapar"
 
 
@@ -24,8 +24,3 @@ func escape_dungeon():
 	RunData.add_loot("dungeon_clear", "Botín de huida", 100)
 	RunData.end_run()
 	GameManager.return_to_city()
-
-
-func _on_exit_left_body_entered(body):
-	if body.is_in_group("player"):
-		_on_exit_used(2)

@@ -8,6 +8,7 @@ var has_exit_left: bool = false
 var has_exit_right: bool = false
 var dungeon_manager: Node2D
 var room_cleared: bool = false
+var require_clear_for_exit: bool = true
 
 @onready var spawn_point = $SpawnPoint
 @onready var exit_up = $ExitUp
@@ -20,13 +21,15 @@ func _ready():
 	if spawn_point == null:
 		spawn_point = $SpawnPoint if has_node("SpawnPoint") else null
 	if exit_up:
-		$ExitUp.visible = true if has_node("ExitUp") else false
+		exit_up.visible = has_exit_up
 	if exit_down:
-		$ExitDown.visible = true if has_node("ExitDown") else false
+		exit_down.visible = has_exit_down
 	if exit_left:
-		$ExitLeft.visible = true if has_node("ExitLeft") else false
+		exit_left.visible = has_exit_left
+		exit_left.body_entered.connect(_on_exit_left_body_entered)
 	if exit_right:
-		$ExitRight.visible = true if has_node("ExitRight") else false
+		exit_right.visible = has_exit_right
+		exit_right.body_entered.connect(_on_exit_right_body_entered)
 
 
 func get_player_spawn_position() -> Vector2:
@@ -65,6 +68,10 @@ func on_player_entered():
 
 func on_room_cleared():
 	room_cleared = true
+	if exit_right:
+		exit_right.get_node("CollisionShape2D").disabled = false
+	if exit_left:
+		exit_left.get_node("CollisionShape2D").disabled = false
 
 
 func _on_exit_used(direction: int):
@@ -74,3 +81,13 @@ func _on_exit_used(direction: int):
 		next_idx = current_idx - 1
 	if next_idx >= 0 and next_idx < dungeon_manager.rooms.size():
 		dungeon_manager.move_player_to_room(next_idx, direction)
+
+
+func _on_exit_right_body_entered(body):
+	if body.is_in_group("player") and (not require_clear_for_exit or room_cleared):
+		_on_exit_used(3)
+
+
+func _on_exit_left_body_entered(body):
+	if body.is_in_group("player") and (not require_clear_for_exit or room_cleared):
+		_on_exit_used(2)

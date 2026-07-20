@@ -17,19 +17,19 @@ var rooms_container: Node2D
 
 @onready var room_templates: Dictionary = {
 	RoomType.COMBAT: [
-		preload("res://scenes/Dungeon/Rooms/CombatRoom.tscn"),
+		preload("res://scenes/dungeon/rooms/CombatRoom.tscn"),
 	],
 	RoomType.TREASURE: [
-		preload("res://scenes/Dungeon/Rooms/TreasureRoom.tscn"),
+		preload("res://scenes/dungeon/rooms/TreasureRoom.tscn"),
 	],
 	RoomType.ELITE: [
-		preload("res://scenes/Dungeon/Rooms/EliteRoom.tscn"),
+		preload("res://scenes/dungeon/rooms/EliteRoom.tscn"),
 	],
 	RoomType.START: [
-		preload("res://scenes/Dungeon/Rooms/StartRoom.tscn"),
+		preload("res://scenes/dungeon/rooms/StartRoom.tscn"),
 	],
 	RoomType.EXIT: [
-		preload("res://scenes/Dungeon/Rooms/ExitRoom.tscn"),
+		preload("res://scenes/dungeon/rooms/ExitRoom.tscn"),
 	],
 }
 

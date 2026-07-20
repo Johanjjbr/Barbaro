@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 ]
 
-[ext_resource type="Script" path="res://scripts/HUD/HUD.gd" id="1_hud"]
+[ext_resource type="Script" path="res://scripts/hud/HUD.gd" id="1_hud"]
 
 [node name="HUD" type="CanvasLayer"]
 layer = 10
@@ -8,99 +8,3 @@ script = ExtResource("1_hud")
 
 [node name="HPBar" type="ColorRect" parent="."]
 position = Vector2(20, 20)
-size = Vector2(200, 20)
-color = Color(0.5, 0.05, 0.05, 1)
-
-[node name="HPBarFill" type="ColorRect" parent="HPBar"]
-size = Vector2(200, 20)
-color = Color(0.8, 0.1, 0.1, 1)
-
-[node name="HPBar/HPText" type="Label" parent="HPBar"]
-position = Vector2(75, 2)
-size = Vector2(50, 16)
-text = "100/100"
-horizontal_alignment = 1
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 11
-
-[node name="FuryBar" type="ColorRect" parent="."]
-position = Vector2(20, 45)
-size = Vector2(200, 12)
-color = Color(0.3, 0.15, 0.02, 1)
-
-[node name="FuryBarFill" type="ColorRect" parent="FuryBar"]
-size = Vector2(0, 12)
-color = Color(1, 0.5, 0, 1)
-
-[node name="FuryBar/FuryText" type="Label" parent="FuryBar"]
-position = Vector2(80, 0)
-size = Vector2(40, 12)
-text = "0/100"
-horizontal_alignment = 1
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 10
-
-[node name="SkillsContainer" type="HBoxContainer" parent="."]
-position = Vector2(20, 65)
-size = Vector2(300, 30)
-
-[node name="SkillBasic" type="Panel" parent="SkillsContainer"]
-size = Vector2(60, 30)
-color = Color(0.2, 0.2, 0.2, 0.8)
-
-[node name="SkillBasic/Label" type="Label" parent="SkillsContainer/SkillBasic"]
-position = Vector2(5, 5)
-size = Vector2(50, 20)
-text = "Ataque"
-horizontal_alignment = 1
-theme_override_font_sizes/font_size = 9
-
-[node name="SkillHeavy" type="Panel" parent="SkillsContainer"]
-size = Vector2(60, 30)
-color = Color(0.3, 0.1, 0.0, 0.8)
-
-[node name="SkillHeavy/Label" type="Label" parent="SkillsContainer/SkillHeavy"]
-position = Vector2(5, 5)
-size = Vector2(50, 20)
-text = "Golpe C (20F)"
-horizontal_alignment = 1
-theme_override_font_sizes/font_size = 8
-
-[node name="SkillBash" type="Panel" parent="SkillsContainer"]
-size = Vector2(60, 30)
-color = Color(0.3, 0.2, 0.0, 0.8)
-
-[node name="SkillBash/Label" type="Label" parent="SkillsContainer/SkillBash"]
-position = Vector2(5, 5)
-size = Vector2(50, 20)
-text = "Embestida"
-horizontal_alignment = 1
-theme_override_font_sizes/font_size = 8
-
-[node name="SkillRoar" type="Panel" parent="SkillsContainer"]
-size = Vector2(60, 30)
-color = Color(0.3, 0.0, 0.2, 0.8)
-
-[node name="SkillRoar/Label" type="Label" parent="SkillsContainer/SkillRoar"]
-position = Vector2(5, 5)
-size = Vector2(50, 20)
-text = "Grito"
-horizontal_alignment = 1
-theme_override_font_sizes/font_size = 8
-
-[node name="NotificationContainer" type="VBoxContainer" parent="."]
-position = Vector2(900, 20)
-size = Vector2(360, 200)
-theme_override_constants/separation = 5
-
-[node name="DepthLabel" type="Label" parent="."]
-position = Vector2(20, 100)
-text = "Piso: 1"
-theme_override_font_sizes/font_size = 14
-theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
-
-[node name="BerserkerIndicator" type="Label" parent="."]
-position = Vector2(20, 120)
-text = ""
-theme_override_font_sizes/font_size = 14
-theme_override_colors/font_color = Color(1, 0.3, 0, 1)

@@ -25,6 +25,10 @@ func heal(amount: int) -> void:
 func take_damage(amount: int) -> void:
     current_health -= amount
 
+func setup(data: Resource) -> void:
+    if data is CharacterStats:
+        set_max_health(data.max_hp)
+
 func set_max_health(value: int) -> void:
     max_health = maxi(value, 1)
     current_health = mini(current_health, max_health)

@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 ]
 
-[ext_resource type="Script" path="res://scripts/Dungeon/DungeonManager.gd" id="1_dungeon"]
-[ext_resource type="PackedScene" path="res://scenes/Dungeon/Player/Player.tscn" id="2_player"]
-[ext_resource type="PackedScene" path="res://scenes/HUD/HUD.tscn" id="3_hud"]
+[ext_resource type="Script" path="res://scripts/dungeon/DungeonManager.gd" id="1_dungeon"]
+[ext_resource type="PackedScene" path="res://scenes/entities/player/Player.tscn" id="2_player"]
+[ext_resource type="PackedScene" path="res://scenes/hud/HUD.tscn" id="3_hud"]
 
 [node name="Dungeon" type="Node2D"]
 script = ExtResource("1_dungeon")

@@ -1,4 +1,4 @@
-extends "res://scripts/Dungeon/BaseRoom.gd"
+extends "res://scripts/dungeon/BaseRoom.gd"
 
 var loot_claimed: bool = false
 var possible_loot = [
@@ -12,8 +12,6 @@ var possible_loot = [
 
 func _ready():
 	super()
-	$ExitRight.body_entered.connect(_on_exit_right_body_entered)
-	$ExitLeft.body_entered.connect(_on_exit_left_body_entered)
 
 
 func on_player_entered():
@@ -28,19 +26,3 @@ func _claim_loot():
 	RunData.add_loot(loot.id, loot.name, loot.value)
 	NotificationSystem.add_notification("+%d Oro - %s" % [loot.value, loot.name])
 	$Label.text = loot.name
-
-
-func on_room_cleared():
-	super()
-	$ExitRight/CollisionShape2D.disabled = false
-	$ExitLeft/CollisionShape2D.disabled = false
-
-
-func _on_exit_right_body_entered(body):
-	if body.is_in_group("player") and room_cleared:
-		_on_exit_used(3)
-
-
-func _on_exit_left_body_entered(body):
-	if body.is_in_group("player") and room_cleared:
-		_on_exit_used(2)

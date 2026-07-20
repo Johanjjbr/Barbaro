@@ -1,50 +1,30 @@
-; Engine configuration file.
-; It's best edited using the editor UI and not directly,
-; since the parameters that go here are not all obvious.
-;
-; Format:
-;   [section] ; section goes between []
-;   param=value ; assign values to parameters
-
 config_version=5
 
 [application]
-
 config/name="El Bárbaro"
-config/description="Roguelike de laberinto con sistema meta-consciente"
-run/main_scene="res://scenes/UI/MainMenu.tscn"
+config/description="Action RPG Roguelite"
+run/main_scene="res://scenes/Boot.tscn"
 config/features=PackedStringArray("4.7")
 boot_splash/bg_color=Color(0.05, 0.05, 0.05, 1)
 
 [autoload]
-
+EventBus="*res://scripts/core/event_bus.gd"
+Logger="*res://scripts/core/logger.gd"
+ConfigManager="*res://scripts/core/config_manager.gd"
 GameManager="*res://scripts/Autoload/GameManager.gd"
+AudioManager="*res://scripts/core/audio_manager.gd"
 MetaKnowledge="*res://scripts/Autoload/MetaKnowledge.gd"
 PlayerData="*res://scripts/Autoload/PlayerData.gd"
 RunData="*res://scripts/Autoload/RunData.gd"
 NotificationSystem="*res://scripts/Autoload/NotificationSystem.gd"
-SuspicionSystem="*res://scripts/Autoload/SuspicionSystem.gd"
 
 [display]
-
-window/size/viewport_width=1280
-window/size/viewport_height=720
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
+window/dpi/allow_hidpi=true
 
 [input]
-
-ui_accept={
-"deadzone": 0.5,
-"events": [{
-"keycode": 4194309
-}]
-}
-ui_cancel={
-"deadzone": 0.5,
-"events": [{
-"keycode": 4194305
-}]
-}
 move_left={
 "deadzone": 0.5,
 "events": [{
@@ -85,10 +65,34 @@ attack={
 "mouse_button": 1
 }]
 }
-heavy_attack={
+interact={
 "deadzone": 0.5,
 "events": [{
-"keycode": 81
+"keycode": 69
+}]
+}
+inventory={
+"deadzone": 0.5,
+"events": [{
+"keycode": 73
+}]
+}
+equipment={
+"deadzone": 0.5,
+"events": [{
+"keycode": 67
+}]
+}
+pause={
+"deadzone": 0.5,
+"events": [{
+"keycode": 4194305
+}]
+}
+dodge={
+"deadzone": 0.5,
+"events": [{
+"keycode": 32
 }]
 }
 skill_1={
@@ -103,20 +107,13 @@ skill_2={
 "keycode": 50
 }]
 }
-interact={
+heavy_attack={
 "deadzone": 0.5,
 "events": [{
-"keycode": 32
-}]
-}
-pause={
-"deadzone": 0.5,
-"events": [{
-"keycode": 4194305
+"keycode": 82
 }]
 }
 
 [rendering]
-
-renderer/rendering_method="gl_compatibility"
-2d/sdf/oversize=1.0
+renderer/rendering_method="mobile"
+renderer/rendering_method.mobile="mobile"

@@ -1,0 +1,79 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://scripts/entities/enemies/enemy_controller.gd" id="1_controller"]
+[ext_resource type="Script" path="res://scripts/components/health_component.gd" id="2_health"]
+[ext_resource type="Script" path="res://scripts/components/hurtbox_component.gd" id="3_hurtbox"]
+[ext_resource type="Script" path="res://scripts/components/hitbox_component.gd" id="4_hitbox"]
+[ext_resource type="Script" path="res://scripts/components/enemy_state_machine.gd" id="5_fsm"]
+[ext_resource type="Script" path="res://scripts/components/states/idle_state.gd" id="6_idle"]
+[ext_resource type="Script" path="res://scripts/components/states/patrol_state.gd" id="7_patrol"]
+[ext_resource type="Script" path="res://scripts/components/states/chase_state.gd" id="8_chase"]
+[ext_resource type="Script" path="res://scripts/components/states/attack_state.gd" id="9_attack"]
+[ext_resource type="Script" path="res://scripts/components/states/hurt_state.gd" id="10_hurt"]
+[ext_resource type="Script" path="res://scripts/components/states/dead_state.gd" id="11_dead"]
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 1
+script = ExtResource("1_controller")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = RectangleShape2D.new()
+shape.size = Vector2(14, 16)
+
+[node name="Sprite2D" type="ColorRect" parent="."]
+position = Vector2(-7, -8)
+size = Vector2(14, 16)
+color = Color(0.8, 0.4, 0.4, 1)
+
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = CircleShape2D.new()
+shape.radius = 120.0
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 1
+script = ExtResource("4_hitbox")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = CircleShape2D.new()
+shape.radius = 25.0
+
+[node name="HurtboxComponent" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("3_hurtbox")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+shape = RectangleShape2D.new()
+shape.size = Vector2(14, 16)
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_health")
+max_health = 30
+
+[node name="EnemyStateMachine" type="Node" parent="."]
+script = ExtResource("5_fsm")
+initial_state = "Idle"
+
+[node name="IdleState" type="Node" parent="EnemyStateMachine"]
+script = ExtResource("6_idle")
+
+[node name="PatrolState" type="Node" parent="EnemyStateMachine"]
+script = ExtResource("7_patrol")
+
+[node name="ChaseState" type="Node" parent="EnemyStateMachine"]
+script = ExtResource("8_chase")
+
+[node name="AttackState" type="Node" parent="EnemyStateMachine"]
+script = ExtResource("9_attack")
+
+[node name="HurtState" type="Node" parent="EnemyStateMachine"]
+script = ExtResource("10_hurt")
+
+[node name="DeadState" type="Node" parent="EnemyStateMachine"]
+script = ExtResource("11_dead")
