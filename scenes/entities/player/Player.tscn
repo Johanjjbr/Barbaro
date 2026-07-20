@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/entities/player_controller.gd" id="1_fj782"]
+[ext_resource type="Script" path="res://scripts/components/health_component.gd" id="2_hg3k9"]
+[ext_resource type="Script" path="res://scripts/entities/camera_controller.gd" id="3_mp4n1"]
+[ext_resource type="Script" path="res://scripts/components/hurtbox_component.gd" id="4_rt5y6"]
+[ext_resource type="Script" path="res://scripts/components/component.gd" id="5_wx7z"]
+[ext_resource type="Resource" path="res://resources/characters/barbarian_stats.tres" id="6_st8y"]
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 1
+collision_mask = 2
+script = ExtResource("1_fj782")
+stats = ExtResource("6_st8y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = RectangleShape2D.new()
+shape.size = Vector2(16, 16)
+
+[node name="Sprite2D" type="ColorRect" parent="."]
+position = Vector2(-8, -8)
+size = Vector2(16, 16)
+color = Color(0.6, 0.3, 0.1, 1)
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_hg3k9")
+
+[node name="CameraController" type="Camera2D" parent="."]
+script = ExtResource("3_mp4n1")
+
+[node name="HurtboxComponent" type="Area2D" parent="."]
+script = ExtResource("4_rt5y6")
+collision_layer = 0
+collision_mask = 2
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+shape = RectangleShape2D.new()
+shape.size = Vector2(16, 16)

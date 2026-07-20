@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="CharacterStats" format=3]
+
+[resource]
+script = ExtResource("1_mn4p2")
+max_hp = 120
+health = 120
+strength = 8
+defense = 5
+speed = 8
+agility = 4
+vitality = 6
+attack_speed = 0.9
+move_speed = 180.0
+critical = 0.05
+armor = 2
+
+[ext_resource type="Script" path="res://scripts/resources/character_stats.gd" id="1_mn4p2"]
